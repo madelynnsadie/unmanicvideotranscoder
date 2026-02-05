@@ -1,0 +1,25 @@
+{
+  "repo": {
+    "id": "repository.official",
+    "name": "Official Repo",
+    "icon": "",
+    "repo_data_directory": "https://raw.githubusercontent.com/Unmanic/unmanic-plugins/repo/",
+    "repo_data_url": "https://raw.githubusercontent.com/Unmanic/unmanic-plugins/repo/repo.json"
+  },
+  "plugins": [
+    {
+      "author": "sadie",
+      "compatibility": [2],
+      "description": "mroww",
+      "icon": "https://raw.githubusercontent.com/Unmanic/plugin.video_transcoder/master/icon.png",
+      "id": "video_transcoder",
+      "name": "Transcode Video Files",
+      "priorities": {
+        "on_library_management_file_test": 10,
+        "on_worker_process": 1
+      },
+      "tags": "video,ffmpeg",
+      "version": "0.1.13"
+    }
+  ]
+}

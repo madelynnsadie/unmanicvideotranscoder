@@ -541,7 +541,14 @@ class NvencEncoder(Encoder):
         logger.info("got here!!")
         logger.info(stream_info.get('codec_name'))
 
-        if (self.settings.get_setting('nvenc_decoding_method') or '').lower() in ['cuvid']:
+
+        in_codec = stream_info.get('codec_name', 'unknown_codec_name')
+
+        if in_codec == 'av1':
+            print("defaulting to cpu because of stinky av1 :(")
+            # Force CPU decode by not using cuvid
+            generic_kwargs = {}
+        elif (self.settings.get_setting('nvenc_decoding_method') or '').lower() in ['cuvid']:
             in_codec = stream_info.get('codec_name', 'unknown_codec_name')
             generic_kwargs = {f'-c:v:{stream_id}': f'{in_codec}_cuvid'}
 

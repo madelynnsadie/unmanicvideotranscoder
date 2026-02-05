@@ -538,7 +538,9 @@ class NvencEncoder(Encoder):
                     "NVENC temporal AQ is configured, but this GPU does not appear to support it. This will likely fail.")
             stream_args += [f'-temporal-aq:v:{stream_id}', '1']
 
-        # If CUVID is enabled, return generic_kwargs
+        logger.info("got here!!")
+        logger.info(stream_info.get('codec_name'))
+
         if (self.settings.get_setting('nvenc_decoding_method') or '').lower() in ['cuvid']:
             in_codec = stream_info.get('codec_name', 'unknown_codec_name')
             generic_kwargs = {f'-c:v:{stream_id}': f'{in_codec}_cuvid'}
